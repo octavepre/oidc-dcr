@@ -6,8 +6,12 @@ apk add curl jq bind-tools kubectl
 # Current registration detection
 secret=$(kubectl get secret "$SECRET_NAME" -o json 2>/dev/null)
 if [[ -n "$secret" ]] >/dev/null; then
+  curlOpts="-s"
+  {{- if .Values.tls.insecure }}
+  curlOpts="$curlOpts -k"
+  {{- end }}
   response=$(
-    curl -s \
+    curl $curlOpts \
       -H "Content-Type:application/json" \
       -H "Authorization: Bearer $(
         echo "$secret" | jq -r '.data.registration_access_token | @base64d'
@@ -25,7 +29,11 @@ echo 'INFO: DCR registration'
 # DCR registration
 echo 'INFO: Request body'
 echo "$REQUEST" | jq . # Log the request for debugging purposes
-response=$(curl -s \
+curlOpts="-s"
+{{- if .Values.tls.insecure }}
+curlOpts="$curlOpts -k"
+{{- end }}
+response=$(curl $curlOpts \
   -H "Content-Type:application/json" \
   -d "$REQUEST" \
   "$DCR_REGISTRATION_URL")

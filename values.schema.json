@@ -116,6 +116,12 @@
       "required": ["redirect_uris"],
       "default": {}
     },
+    "tls":{
+      "type": "object",
+      "description": "Various resources required to call the DCR API",
+      "properties": {
+        "insecure": { "type": "boolean", "default": false }
+    },
     "secret": {
       "type": "string",
       "description": "Name of the secret being created."
