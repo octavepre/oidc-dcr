@@ -59,6 +59,8 @@ The chart creates a Kubernetes Job that executes a bash script to perform the dy
   Use of TLS in client creation via the DCR API.
   - `insecure`
     Use the `insecure` option of the `curl` command. Supported values are `true` or `false`. (Default: `false`)
+  - `certificate` 
+     Mount a secret into DCR jobs. Value needs to match the name of an accessible secret.
 
 - `secret`  
   Control the name for the created Kubernetes Secret. If left empty, the Helm chart name is used.

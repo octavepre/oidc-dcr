@@ -120,7 +120,8 @@
       "type": "object",
       "description": "Various resources required to call the DCR API",
       "properties": {
-        "insecure": { "type": "boolean", "default": false }
+        "insecure": { "type": "boolean", "default": false },
+        "certificate": { "type": "string" }
     },
     "secret": {
       "type": "string",

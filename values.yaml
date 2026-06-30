@@ -8,6 +8,7 @@ request: {}
 # Secure the DCR api call
 tls: 
   insecure: false
+  certificate: "" # provide a certificate to DCR job using an accessible secret
 # Name of the secret being created, default is the chart name
 secret: ""
 security:

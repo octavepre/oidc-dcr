@@ -2,6 +2,10 @@
 
 # Dependencies installation
 apk add curl jq bind-tools kubectl
+{{- if and (not .Values.tls.insecure) (ne .Values.tls.certificate "") }}
+apk add ca-certificates
+update-ca-certificates
+{{- end }}
 
 # Current registration detection
 secret=$(kubectl get secret "$SECRET_NAME" -o json 2>/dev/null)
