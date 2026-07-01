@@ -122,6 +122,7 @@
       "properties": {
         "insecure": { "type": "boolean", "default": false },
         "certificate": { "type": "string" }
+      }
     },
     "secret": {
       "type": "string",
